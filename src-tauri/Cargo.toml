@@ -3,6 +3,10 @@ name = "palate-detector"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+name = "palate_detector_lib"
+path = "src/lib.rs"
+
 [build-dependencies]
 tauri-build = { version = "2", features = [] }
 
