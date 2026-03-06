@@ -3,6 +3,15 @@
 
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
 
+/// Greet a user by name
+///
+/// This is a sample Tauri command to verify IPC communication works.
+/// It takes a name parameter and returns a personalized greeting.
+#[tauri::command]
+fn greet(name: &str) -> String {
+    format!("Hello, {}! Welcome to Palate Detector.", name)
+}
+
 /// Run the Tauri application
 ///
 /// This function initializes and runs the Tauri application.
