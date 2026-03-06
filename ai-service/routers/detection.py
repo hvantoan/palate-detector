@@ -120,7 +120,7 @@ async def detect(
     logger.info(
         "Processing detection request",
         extra={
-            "filename": file.filename,
+            "uploaded_filename": file.filename,
             "content_type": file.content_type,
             "size": len(content),
         },
