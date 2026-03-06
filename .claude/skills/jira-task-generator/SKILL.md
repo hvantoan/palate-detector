@@ -1,7 +1,6 @@
 ---
 name: jira-task-generator
 description: "Generate professional Jira task templates from task ideas or feature requests. Use when creating tickets, breaking down features, writing acceptance criteria, or converting requirements into engineering-ready Jira tasks."
-version: 1.0.0
 ---
 
 # Jira Task Generator
