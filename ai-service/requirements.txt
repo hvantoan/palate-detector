@@ -13,3 +13,6 @@ opencv-python-headless>=4.9.0
 
 # Numerical Computing
 numpy>=1.26.0
+
+# Configuration with Environment Variable Support
+pydantic-settings>=2.0.0
