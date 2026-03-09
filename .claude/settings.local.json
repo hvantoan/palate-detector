@@ -1,0 +1,27 @@
+{
+  "env": {
+    "ANTHROPIC_AUTH_TOKEN": "GqepqRnWqyhTumVM0wteVkN7e2xWQ41p",
+    "ANTHROPIC_BASE_URL": "https://cliproxy.sweetiecutie.com/api/provider/ali",
+    "ANTHROPIC_MODEL": "glm-5",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "glm-5",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "glm-5",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "glm-5"
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "WebSearch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/home/vif/.ccs/hooks/websearch-transformer.cjs\"",
+            "timeout": 85
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "defaultMode": "bypassPermissions"
+  }
+}

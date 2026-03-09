@@ -45,6 +45,18 @@ Does NOT handle: Jira API integration, sprint planning, backlog prioritization, 
 - Do NOT ask for more info unless absolutely necessary — infer from context
 - For few-shot examples, see `references/jira-task-examples.md`
 
+## File Output (Default Behavior)
+
+After generating task templates, **automatically save to `docs/tasks/`**:
+
+1. **Filename format:** `{task-id}-{slug}.md` (e.g., `T1-repository-setup.md`, `AUTH-2-login-api.md`)
+2. **Location:** `{project_root}/docs/tasks/`
+3. **Create directory** if not exists
+4. **Each task** gets its own file (not all tasks in one file)
+5. **Confirm** with user after files created: list files with paths
+
+Skip file creation only if user explicitly says "no file" or "just show me".
+
 ## Template Quick Reference
 
 ```
