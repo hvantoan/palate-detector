@@ -128,11 +128,13 @@ def sample_png_bytes() -> bytes:
     This is a 1x1 white pixel PNG image - the smallest valid PNG.
     Useful for testing different image format uploads.
 
+    Note: Includes padding to meet the 100-byte minimum size requirement.
+
     Returns:
-        bytes: Minimal valid PNG image data.
+        bytes: Valid PNG image data (>=100 bytes).
     """
-    # Minimal valid PNG: 1x1 white pixel
-    return bytes([
+    # Minimal valid PNG: 1x1 white pixel (67 bytes) + padding to meet 100-byte minimum
+    png_data = bytes([
         0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A,  # PNG signature
         0x00, 0x00, 0x00, 0x0D, 0x49, 0x48, 0x44, 0x52,  # IHDR chunk
         0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01,
@@ -145,6 +147,8 @@ def sample_png_bytes() -> bytes:
         0x00, 0x00, 0x00, 0x00, 0x49, 0x45, 0x4E, 0x44,  # IEND chunk
         0xAE, 0x42, 0x60, 0x82,
     ])
+    # Pad to 100 bytes minimum (required by detection service validation)
+    return png_data + b'\x00' * (100 - len(png_data))
 
 
 @pytest.fixture
