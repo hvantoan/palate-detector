@@ -11,7 +11,7 @@ from typing import AsyncGenerator
 
 import pytest
 import pytest_asyncio
-from httpx import AsyncClient
+from httpx import ASGITransport, AsyncClient
 
 # Import the FastAPI app
 # Note: imports are done inside fixtures to avoid issues with
@@ -30,13 +30,14 @@ def client() -> Generator[AsyncClient, None, None]:
     """
     Create a test client for the FastAPI application.
 
-    Uses httpx.AsyncClient for async endpoint testing.
+    Uses httpx.AsyncClient with ASGITransport for async endpoint testing.
     Yields the client for use in tests.
 
     Yields:
         AsyncClient: HTTP client configured for the test app.
     """
-    with AsyncClient(app=app, base_url="http://test") as client:
+    transport = ASGITransport(app=app)
+    with AsyncClient(transport=transport, base_url="http://test") as client:
         yield client
 
 
@@ -50,7 +51,8 @@ async def async_client() -> AsyncGenerator[AsyncClient, None]:
     Yields:
         AsyncClient: HTTP client configured for the test app.
     """
-    async with AsyncClient(app=app, base_url="http://test") as client:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
         yield client
 
 
