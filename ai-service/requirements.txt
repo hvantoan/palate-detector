@@ -16,3 +16,13 @@ numpy>=1.26.0
 
 # Configuration with Environment Variable Support
 pydantic-settings>=2.0.0
+
+# Testing Dependencies
+pytest>=7.0.0
+pytest-asyncio>=0.21.0
+httpx>=0.24.0
+
+# ML Dependencies (uncomment when integrating models)
+# ultralytics>=8.0.0    # YOLO model for plate detection
+# easyocr>=1.7.0        # OCR engine for text recognition
+# Note: EasyOCR shares PyTorch dependency with ultralytics, avoiding PaddlePaddle
